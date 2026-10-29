@@ -48,7 +48,3 @@ Le PESQ MATLAB de Loizou (P-code) ne tourne plus dans MATLAB, d'où un passage p
 Sur ce PC, `pesq` est déjà installé (compilé avec le gcc de Strawberry Perl) :
 il suffit de lancer `python pesq_synthese.py` dans `TP2_Matlab/Partie4/`.
 
-## `_a_supprimer/`
-
-Fichiers écartés (doublons de figures, figures abîmées, PESQ de Loizou inutilisable,
-`.wav` vides, archive téléchargée). Rien n'y est utilisé ; le dossier peut être supprimé.
