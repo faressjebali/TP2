@@ -1,5 +1,6 @@
 %% Partie 2 - Question (d) : influence de sigv2 pour P = 10
 clear; clc; close all;
+if ~isfolder('figs_partie2'), mkdir('figs_partie2'); end
 
 % Parametres
 N     = 1e4;
@@ -46,7 +47,7 @@ for s = 1:nS
     xlabel('k'); ylabel('eqm(k)');
     title(sprintf('eqm(k) pour P = 10 et \\sigma_v^2 = %.2f', sigList(s)));
     legend('eqm(k)', 'EQM_{min}', 'Location', 'best');
-    saveas(gcf, sprintf('fig%d.png', 26+s));      % fig27 a fig31
+    saveas(gcf, sprintf('figs_partie2/fig%d.png', 26+s));      % fig27 a fig31
 end
 
 % Figure 32 : comparaison (axes log)
@@ -61,4 +62,4 @@ ylim([0.5*min(EQMmin) 3*max(EQMmin)]);
 xlabel('k'); ylabel('eqm(k)');
 title('eqm(k) pour P = 10 et différentes valeurs de \sigma_v^2');
 legend(h, arrayfun(@(v) sprintf('\\sigma_v^2 = %.2f', v), sigList, 'UniformOutput', false), 'Location', 'best');
-saveas(gcf, 'fig32.png');
+saveas(gcf, 'figs_partie2/fig32.png');

@@ -1,0 +1,14 @@
+# Fichiers intermediaires LaTeX (regeneres a chaque compilation, dans build/ via latexmkrc)
+build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# Divers
+desktop.ini
+*.asv
+_a_supprimer/

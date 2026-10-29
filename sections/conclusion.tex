@@ -1,0 +1,17 @@
+%==================== CONCLUSION ====================
+\section{Conclusion}
+
+Ce TP a mis en œuvre le filtre de Wiener sur une sinusoïde bruitée, sur un signal audio réel, puis pour séparer deux voix mélangées. Le filtre est obtenu en résolvant $\mathbf{R}_x\mathbf{w}_{opt}=\mathbf{r}_{dx}$, et l'erreur minimale $\mathrm{EQM}_{\min}=r_d(0)-\mathbf{w}_{opt}^T\mathbf{r}_{dx}$ correspond à l'erreur observée en simulation, à une erreur d'estimation près qui diminue quand $N$ augmente.
+
+\begin{interpretation}[Ce qu'il faut retenir]
+\begin{itemize}
+  \item \textbf{Ordre du filtre.} $\mathrm{EQM}_{\min}$ diminue avec $P$ puis atteint un palier : $P\approx 25$ pour la sinusoïde ($\approx 11$~dB de gain), $P=10$ pour le signal audio, dont la corrélation décroît rapidement.
+  \item \textbf{Débruitage par trames.} Il suit mieux la non-stationnarité du signal audio, mais n'améliore le gain du signal reconstruit que de $\approx 0.2$~dB et crée des clics aux frontières : des trames de $20$ à $50$~ms sont un meilleur compromis que $3$~ms.
+  \item \textbf{Limites du critère.} Le gain en RSB augmente mécaniquement quand le bruit domine et ne mesure ni les discontinuités ni le bruit résiduel audible.
+  \item \textbf{Limites du filtre.} Il suppose des statistiques connues et un signal stationnaire. Sans signal propre, $r_d(k)$ doit être estimé sur le signal bruité (trames longues nécessaires), et un bruit coloré dans la bande du signal ne peut pas être éliminé.
+  \item \textbf{Séparation de deux voix.} Le filtre sépare deux voix grâce aux différences de leurs spectres. Un filtre global ne voit que les spectres moyens et sépare peu ($+4.3$~dB) ; des trames de $40$~ms avec recouvrement de 50~\% donnent $+12.3$~dB et une qualité perçue nettement meilleure (PESQ de $2.40$ à $3.31$), car sur une trame courte une voix domine presque toujours l'autre.
+  \item \textbf{Robustesse.} Ce résultat suppose l'autocorrélation de chaque voix connue sur chaque trame. Le filtre est proportionnel à $\mathbf{r}_{d_1}$ : une erreur sur sa puissance se transmet à la sortie. Avec un dictionnaire appris par $k$-means, le gain tombe à $7.4$~dB et la qualité perçue reste celle du mélange ; le filtre itératif à modèle AR proposé n'apporte pas d'amélioration, car l'interférence est elle-même de la parole.
+\end{itemize}
+\end{interpretation}
+
+Ces limites justifient l'approche de Widrow (partie~1) : le LMS ajuste les coefficients à chaque échantillon, sans connaître les statistiques et sans découpage en trames. Le comparer au filtre de Wiener sur le même signal audio serait une suite naturelle de ce travail.

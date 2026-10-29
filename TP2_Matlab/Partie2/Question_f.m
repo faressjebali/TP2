@@ -1,5 +1,6 @@
 %% Partie 2 - Question (f) : gain en RSB en fonction de l'ordre P
 clear; clc; close all;
+if ~isfolder('figs_partie2'), mkdir('figs_partie2'); end
 
 % Parametres
 N     = 1e4;
@@ -66,4 +67,4 @@ grid on; xticks(Plist);
 xlabel('Ordre P'); ylabel('gain (dB)');
 title('Gain en RSB en fonction de P (\sigma_v^2 = 0.1)');
 legend('gain mesure', 'gain deduit de EQM_{min}', 'Location', 'best');
-saveas(gcf, 'fig36.png');
+saveas(gcf, 'figs_partie2/fig36.png');

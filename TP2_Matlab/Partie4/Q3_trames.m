@@ -73,3 +73,8 @@ saveas(gcf, [rep 'p4_q3_gain_vs_RSB.png']);
 N = length(x);
 sound(d1g, Fs);  pause(N/Fs + 0.5);
 sound(d1h, Fs);
+
+d2h = separation_trames(x, d2, 20, round(20e-3*Fs));
+pause(N/Fs + 0.5);
+sound(d2h, Fs);
+

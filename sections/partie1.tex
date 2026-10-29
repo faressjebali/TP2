@@ -1,0 +1,58 @@
+%==================== PARTIE 1 ====================
+\section{Partie 1 : Norbert Wiener et Bernard Widrow}
+
+\subsection{Norbert Wiener (1894--1964)}
+
+\begin{enonce}
+\textbf{Énoncé :} Quel est son domaine d'expertise ? Sur quelle problématique a-t-il travaillé ? Quelles sont ses principales réalisations ? Quelle est sa position quant à la cybernétique, sous l'angle de l'organisation de systèmes en interaction, en particulier des systèmes auto-régulés ?
+\end{enonce}
+
+\textbf{Domaine d'expertise.} Mathématicien américain, professeur au MIT à partir de 1919. Il a travaillé sur l'analyse harmonique, les processus aléatoires, la prédiction et le filtrage des signaux, et la théorie de la commande et de la communication \cite{ethw_wiener}.
+
+\textbf{Problématique.} Pendant la Seconde Guerre mondiale : prédire la position future d'un avion à partir de mesures radar bruitées, pour pointer automatiquement les canons antiaériens. Plus généralement : \emph{comment estimer au mieux un signal utile noyé dans du bruit ?} Ce travail mène au filtre qui porte son nom \cite{wiki_wiener}.
+
+\textbf{Principales réalisations.}
+\begin{itemize}
+  \item Le \textbf{filtre de Wiener} : filtre linéaire minimisant l'erreur quadratique moyenne, publié en 1949 dans \emph{Extrapolation, Interpolation, and Smoothing of Stationary Time Series} \cite{wiener1949}.
+  \item Le \textbf{processus de Wiener} (modèle mathématique du mouvement brownien, 1923) et le théorème de \textbf{Wiener--Khinchin}, qui relie autocorrélation et densité spectrale de puissance \cite{ethw_wiener}.
+  \item La \textbf{cybernétique}, fondée avec son livre \emph{Cybernetics: or Control and Communication in the Animal and the Machine} (1948) \cite{wiener1948}.
+\end{itemize}
+
+\textbf{Position sur la cybernétique.} Le mot vient du grec \emph{kubernêtês}, le timonier \cite{monoskop}. Pour Wiener :
+\begin{itemize}
+  \item un système (machine, être vivant ou société) est un ensemble d'éléments en interaction qui se comprend par l'\textbf{information} qu'ils échangent, et non par la matière qui le compose ; l'information mesure son degré d'organisation ;
+  \item l'\textbf{auto-régulation} repose sur la \textbf{rétroaction négative} : le système mesure l'écart entre son état et son but, puis corrige son action (thermostat, pilote automatique, homéostasie du corps) ;
+  \item ces principes sont les mêmes quelle que soit la nature du système : la cybernétique est donc une science transversale du contrôle et de la communication.
+\end{itemize}
+
+\subsection{Bernard Widrow (1929--2025)}
+
+\begin{enonce}
+\textbf{Énoncé :} Quel est son domaine d'expertise ? Sur quelle problématique a-t-il travaillé ? Quelles sont ses principales réalisations ? Identifier son article qui traite des principaux réseaux de neurones adaptatifs.
+\end{enonce}
+
+\textbf{Domaine d'expertise.} Professeur à Stanford, spécialiste du traitement adaptatif du signal et des réseaux de neurones \cite{ethw_widrow}.
+
+\textbf{Problématique.} Le filtre de Wiener exige de connaître les statistiques du signal ($\mathbf{R}_x$, $\mathbf{r}_{dx}$). Widrow cherche un filtre qui \emph{apprend} ses coefficients à partir des données, échantillon par échantillon, en minimisant l'erreur quadratique moyenne.
+
+\textbf{Principales réalisations.}
+\begin{itemize}
+  \item L'algorithme \textbf{LMS} (\emph{Least Mean Squares}), inventé en 1959 avec son étudiant Ted Hoff \cite{chm_widrow}.
+  \item Les réseaux de neurones \textbf{ADALINE} (1960) et \textbf{MADALINE}, entraînés par le LMS \cite{stanford_obit}.
+  \item Les applications du filtrage adaptatif : annulation de bruit et d'écho, égalisation, antennes adaptatives \cite{ethw_widrow} ; livre de référence \emph{Adaptive Signal Processing} (1985) \cite{widrowstearns}.
+\end{itemize}
+
+\textbf{Article sur les réseaux de neurones adaptatifs.} B.~Widrow et M.~A.~Lehr, « 30 Years of Adaptive Neural Networks: Perceptron, Madaline, and Backpropagation », \emph{Proceedings of the IEEE}, vol.~78, n°~9, pp.~1415--1442, 1990 \cite{widrowlehr1990}.
+
+\subsection{Lien avec le TP}
+
+Le filtre de Wiener du TP calcule directement la solution optimale :
+\[
+\mathbf{w}_{opt}=\mathbf{R}_x^{-1}\mathbf{r}_{dx},
+\qquad
+\mathrm{EQM}_{\min}=r_d(0)-\mathbf{w}_{opt}^T\mathbf{r}_{dx},
+\]
+en estimant $\mathbf{R}_x$ et $\mathbf{r}_{dx}$ par moyennes temporelles (signal supposé stationnaire et ergodique). Le LMS de Widrow converge vers la même solution sans inverser de matrice ni connaître les statistiques :
+\[
+\mathbf{w}(n+1)=\mathbf{w}(n)+\mu\,e(n)\,\mathbf{x}(n),\qquad e(n)=d(n)-\mathbf{w}^T(n)\mathbf{x}(n).
+\]

@@ -1,4 +1,5 @@
 clear; clc; close all;
+if ~isfolder('figs_partie2'), mkdir('figs_partie2'); end
 N     = 1e4;          
 n     = (1:N)';
 w0    = 0.05*pi;
@@ -24,6 +25,7 @@ plot(idx, dhat(idx), 'r', 'LineWidth', 1.5);
 grid on; xlabel('n'); ylabel('Amplitude');
 legend('d(n) : signal propre', 'x(n) : signal bruité', '$\hat{d}(n)$ : signal débruité', 'Interpreter', 'latex');
 title('Débruitage par filtre de Wiener (P = 10, \sigma_v^2 = 0.1)');
+saveas(gcf, 'figs_partie2/fig21.png');
 
 %% Question (b)
 Rd0 = rd(1); 

@@ -1,5 +1,6 @@
 clear; clc; close all;
 rng(0);
+if ~isfolder('figs_partie3'), mkdir('figs_partie3'); end
 %% Chargement du son
 [y, Fs] = audioread('monson.wav');   % lit le son et sa frequence
 y = y(:,1);                          % garde un seul canal (si stereo)

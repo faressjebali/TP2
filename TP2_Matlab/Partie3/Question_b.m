@@ -1,5 +1,6 @@
 clear; clc; close all;
 rng(0);
+if ~isfolder('figs_partie3'), mkdir('figs_partie3'); end
 
 % Signal (comme en (a))
 [y, Fs] = audioread('monson.wav');
@@ -36,7 +37,7 @@ figure;
 plot(Plist, EQMmin, 'bo-', 'LineWidth', 1.3); grid on;
 xlabel('P'); ylabel('EQM_{min}');
 title('EQM_{min} en fonction de P (\sigma_v^2 = 0.1)');
-saveas(gcf, 'p3_qb_eqm.png');
+saveas(gcf, 'figs_partie3/p3_qb_eqm.png');
 
 % (f) gain en fonction de P
 figure;

@@ -1,13 +1,12 @@
 %% Partie 3 - Question (d) : EQM_min par trame et description statistique
 clear; clc; close all;
 rng(0);                              % meme bruit qu'en (c)
+if ~isfolder('figs_partie3'), mkdir('figs_partie3'); end
 
-% Chemins du projet
-addpath('/MATLAB Drive/TP2/Partie3/Question_c');      % debruitage_sig.m
-figDir = '/MATLAB Drive/TP2/Partie3/figs_partie3';
+figDir = 'figs_partie3';
 
 % Signal (comme en (c))
-[y, Fs] = audioread('/MATLAB Drive/TP2/Partie3/monson.wav');
+[y, Fs] = audioread('monson.wav');
 y = y(:,1);
 N = 1e5;  debut = round(1*Fs);
 d = y(debut+1 : debut+N);

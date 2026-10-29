@@ -1,5 +1,6 @@
 %% Partie 2 - Question (e) : EQM_min en fonction de l'ordre P
 clear; clc; close all;
+if ~isfolder('figs_partie2'), mkdir('figs_partie2'); end
 
 % Parametres
 N     = 1e4;
@@ -48,4 +49,4 @@ xlabel('Ordre P'); ylabel('EQM');
 title('EQM_{min} en fonction de P (\sigma_v^2 = 0.1)');
 legend('EQM_{min} (formule)', 'eqm(N) (mesuree)', 'Location', 'best');
 xticks(Plist);
-saveas(gcf, 'fig35.png');
+saveas(gcf, 'figs_partie2/fig35.png');

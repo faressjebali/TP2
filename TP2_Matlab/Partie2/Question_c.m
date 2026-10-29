@@ -1,5 +1,6 @@
 %% Partie 2 - Question (c) : convergence de eqm(k) vers EQM_min
 clear; clc; close all;
+if ~isfolder('figs_partie2'), mkdir('figs_partie2'); end
 
 % Parametres
 N     = 1e4;
@@ -43,7 +44,7 @@ for m = 1:length(Plist)
     xlabel('k'); ylabel('eqm(k)');
     title(sprintf('Convergence de eqm(k) vers EQM_{min} (P = %d)', Plist(m)));
     legend('eqm(k)', 'EQM_{min}', 'Location', 'best');
-    saveas(gcf, sprintf('fig%d.png', 22+m));      % fig23, fig24, fig25
+    saveas(gcf, sprintf('figs_partie2/fig%d.png', 22+m));      % fig23, fig24, fig25
 end
 
 % Figure 26 : les trois courbes ensemble
@@ -58,4 +59,4 @@ ylim([0 3*max(EQMmin)]);
 xlabel('k'); ylabel('eqm(k)');
 title('eqm(k) pour P = 3, 5 et 10 (pointillés : EQM_{min})');
 legend(h, 'P = 3', 'P = 5', 'P = 10', 'Location', 'best');
-saveas(gcf, 'fig26.png');
+saveas(gcf, 'figs_partie2/fig26.png');
